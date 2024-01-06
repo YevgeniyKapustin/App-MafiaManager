@@ -41,7 +41,10 @@ class MafiaManager(object):
             self.count_of_roles[role_name] = count_of_role
 
     def fill_player_roles(self) -> None:
-        """Заполняет коллекцию ролей игроков."""
+        """Заполняет коллекцию ролей игроков.
+
+        Если количество ролей не введено, попросит ввести.
+        """
         self.enter_roles() if self.get_count_of_players() == 0 else ...
         while self.count_of_roles:
             role_of_player: str = list(self.count_of_roles)[0]
@@ -53,7 +56,10 @@ class MafiaManager(object):
         shuffle(self.player_roles)
 
     def print_player_roles(self) -> None:
-        """Выводит коллекцию ролей игроков по индексам в консоль."""
+        """Выводит коллекцию ролей игроков по индексам в консоль.
+
+        Если коллекция ролей не готова, заполнит её.
+        """
         self.fill_player_roles() if len(self.player_roles) == 0 else ...
         for index, player_role in enumerate(self.player_roles):
             print(f'{index + 1} {player_role}')
