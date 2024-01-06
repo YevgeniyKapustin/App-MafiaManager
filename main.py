@@ -5,6 +5,8 @@
 """
 from random import shuffle
 
+from colorama import init, Fore
+
 
 class MafiaManager(object):
     """Менеджер для игры в мафию.
@@ -22,11 +24,13 @@ class MafiaManager(object):
     __slots__ = ('count_of_roles', 'player_roles')
 
     def __init__(self):
+        init()
         self.count_of_roles: dict[str, int] = {
-            'мирный': 0,  # название роли: количество в партии
-            'мафия': 0,
-            'шериф': 0,
-            'доктор': 0
+            f'{Fore.GREEN}\033[3mмирный\033[0m{Fore.RESET}': 0,
+            f'{Fore.RED}\033[3mмафия\033[0m{Fore.RESET}': 0,
+            f'{Fore.YELLOW}\033[3mшериф\033[0m{Fore.RESET}': 0,
+            f'{Fore.BLUE}\033[3mдоктор\033[0m{Fore.RESET}': 0
+            # вкл цвет \ вкл курсив \ роль \ выкл курсив \ выкл цвет
         }
         self.player_roles: list[str] = []
 
